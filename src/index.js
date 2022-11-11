@@ -26,15 +26,15 @@ fetchCountries(inputValue)
 }
 function renderCountry(data) {
     clearInput();
-  // clearInput(); ---- виклик функція для очищення стрінки потрібно її створити
-if (data.length === 1) {
+    if (data.length === 1) {
+    
     refs.cardContainer.insertAdjacentHTML('beforeend', cards(data));
     }
     if (data.length >= 2 && data.length <= 10) {
         return cards(country)
         refs.countryList.insertAdjacentHTML('beforeend', cardCountry(data));
         refs.countryInfo.insertAdjacentHTML('beforeend', cardCountry(data));
-    // тут потрібно додати функцію яка буде відмальовувати список країн
+    
     console.log('cards');
     }
 if (data.length > 10) {

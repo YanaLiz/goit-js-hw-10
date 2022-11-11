@@ -21,6 +21,7 @@ function onSearch(event) {
     clearInput();
     return;
     }
+    
 fetchCountries(inputValue)
     .then(data => renderCountry(data))
     .catch(error => {

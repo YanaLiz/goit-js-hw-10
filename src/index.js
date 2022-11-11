@@ -15,9 +15,12 @@ countryList: document.querySelector('.country-list'),
 refs.searchForm.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 function onSearch(event) {
     event.preventDefault();
-    
+
     const inputValue = event.target.value.trim();
-    
+    if (!inputValue) {
+    clearInput();
+    return;
+    }
 fetchCountries(inputValue)
     .then(data => renderCountry(data))
     .catch(error => {
@@ -31,9 +34,8 @@ function renderCountry(data) {
     refs.cardContainer.insertAdjacentHTML('beforeend', cards(data));
     }
     if (data.length >= 2 && data.length <= 10) {
-        return cards(country)
+        
         refs.countryList.insertAdjacentHTML('beforeend', cardCountry(data));
-        refs.countryInfo.insertAdjacentHTML('beforeend', cardCountry(data));
     
     console.log('cards');
     }
@@ -70,8 +72,9 @@ function cardCountry(card) {
     return card
         .map(({ name, flags }) => {
             return `<li>
-  <img src="${flags.svg}" alt="flag" width="200" />
+  <img src="${flags.svg}" alt="flag" width="100" />
   <h2>${name.official}</h2>
 </li>`
         }).join('');
 }
+

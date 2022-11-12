@@ -1,7 +1,7 @@
 import Notiflix from 'notiflix';
 import debounce from 'lodash.debounce';
 import './css/styles.css';
-import fetchCountries from "../fetchCountries";
+import fetchCountries from "../src/fetchCountries";
 
 const DEBOUNCE_DELAY = 300;
 
@@ -21,7 +21,7 @@ function onSearch(event) {
     clearInput();
     return;
     }
-    
+
 fetchCountries(inputValue)
     .then(data => renderCountry(data))
     .catch(error => {
